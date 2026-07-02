@@ -4,13 +4,13 @@
   "description": "",
   "main": "search-test.js",
   "scripts": {
-    "test": "./node_modules/jasmine/bin/jasmine.js --config=test/support/jasmine.json"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jasmine": "3.8.0",
+    "jest": "29.3.1",
     "uuid": "8.3.2"
   }
 }

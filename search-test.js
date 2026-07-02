@@ -13,7 +13,7 @@ function supports_add(args = {}) {
       seneca.test(done)
 
       const routes = seneca.list('sys:search,cmd:add')
-      expect(routes).toContain({ sys: 'search', cmd: 'add' })
+      expect(routes).toContainEqual({ sys: 'search', cmd: 'add' })
 
       return done()
     })
@@ -49,7 +49,7 @@ function add(args = {}) {
           return done(err)
         }
 
-        expect(out).toEqual(jasmine.objectContaining({ ok: true }))
+        expect(out).toEqual({ ok: true })
 
 
         seneca.act('sys:search,cmd:remove', { id: new_id }, function (err, out) {
@@ -102,7 +102,7 @@ function remove(args = {}) {
             return done(err)
           }
 
-          expect(out).toEqual(jasmine.objectContaining({ ok: true }))
+          expect(out).toEqual({ ok: true })
 
           return done()
         })
@@ -146,8 +146,8 @@ function search(args = {}) {
             if (err) {
               return done(err)
             }
-
-            expect(search).toEqual(jasmine.objectContaining({
+            
+            expect(search).toEqual({
               ok: true,
               data: {
                 hits: [
@@ -161,8 +161,8 @@ function search(args = {}) {
                   }
                 ]
               }
-            }))
-
+            })
+            
             Assert(del && del.ok)
 
             return done()
@@ -185,7 +185,7 @@ function supports_search(args = {}) {
       seneca.test(done)
 
       const routes = seneca.list('sys:search,cmd:search')
-      expect(routes).toContain({ sys: 'search', cmd: 'search' })
+      expect(routes).toContainEqual({ sys: 'search', cmd: 'search' })
 
       return done()
     })
@@ -204,7 +204,7 @@ function supports_remove(args = {}) {
       seneca.test(done)
 
       const routes = seneca.list('sys:search,cmd:remove')
-      expect(routes).toContain({ sys: 'search', cmd: 'remove' })
+      expect(routes).toContainEqual({ sys: 'search', cmd: 'remove' })
 
       return done()
     })
